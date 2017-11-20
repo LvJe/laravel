@@ -17,17 +17,20 @@ Route::get('/welcome', function () {
     return 'juanjuanjuanjuan';
 });
 
-Route::get('/user/{id}', function ($id) {
-    $url = route('profile', ['id' => $id]);
-    return $url;
-    return $url;
+Route::get('/users/{id}', function (App\User $user) {
+    dd($user);
 })->name('profile');
 
-Route::any('login',function(){
+/*Route::get('login',function(){
     return view('login');
 });
 
 Route::get('/{default}',function ($default=''){
     return $default.'3';
-})->where(['default'=>'[0-9a-zA-Z_/]*']);
+})->where(['default'=>'[0-9a-zA-Z_/]*']);*/
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
