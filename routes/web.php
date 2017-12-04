@@ -29,8 +29,11 @@ Route::get('/{default}',function ($default=''){
     return $default.'3';
 })->where(['default'=>'[0-9a-zA-Z_/]*']);*/
 
-
 Auth::routes();
+
+//ticketRoutes...
+Route::get('/tickets','TicketController@showTickets')->name('ticket');
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@index')->name('home');
