@@ -24,11 +24,13 @@ class TicketsTableSeeder extends Seeder
 
     public function run()
     {
-        DB::table('tickets')->insert([
-            'name' => str_random(3),
-            'sex' => random_int(1, 2),
-            'phone_number' => $this->gene_phone_number(),
-            'id_number' => $this->gene_id_number()
-        ]);
+        for ($i = 0; $i < 50; $i++) {
+            DB::table('tickets')->insert([
+                'name' => str_random(3),
+                'sex' => random_int(1, 2),
+                'phone_number' => $this->gene_phone_number(),
+                'id_number' => $this->gene_id_number()
+            ]);
+        }
     }
 }
