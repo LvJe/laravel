@@ -8,9 +8,47 @@
                     <div class="panel-heading">新人列表</div>
 
                     <div class="panel-body">
-                        @foreach ($tickets as $ticket)
-                            <li>{{ $ticket->name }}</li>
-                        @endforeach
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>
+                                    姓名
+                                </th>
+                                <th>
+                                    性别
+                                </th>
+                                <th>
+                                    证件号
+                                </th>
+                                <th>
+                                    操作
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($tickets as $ticket)
+                                <tr>
+                                    <td>{{$ticket->name}}</td>
+                                    <td>
+                                    @if($ticket->sex===1)
+                                        男
+                                    @elseif($ticket->sex===2)
+                                        <span style="color: deeppink;">女</span>
+                                    @else
+                                        未知
+                                    @endif
+                                    <td>{{$ticket->id_number}}}</td>
+                                    <td>
+                                        <a>编辑</a>
+                                        |
+                                        <a>删除</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                            <tfoot></tfoot>
+                        </table>
+
                     </div>
                 </div>
             </div>
