@@ -31,7 +31,7 @@
                                     <td>{{$ticket->name}}</td>
                                     <td>
                                     @if($ticket->sex===1)
-                                        男
+                                        <span style="color: deepskyblue;">男</span>
                                     @elseif($ticket->sex===2)
                                         <span style="color: deeppink;">女</span>
                                     @else
