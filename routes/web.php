@@ -33,6 +33,7 @@ Auth::routes();
 
 //ticketRoutes...
 Route::get('/tickets','TicketController@showTickets')->name('ticket');
+Route::get('/tickets/mates','TicketController@mates')->name('ticket');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
