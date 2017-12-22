@@ -17,8 +17,8 @@ class CreateTicketsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->unsignedTinyInteger('sex')->default(0)->comment('0默认不填，1男，2女');
-            $table->string('phone_number',16)->default('')->unique();
-            $table->string('id_number')->default('')->unique();
+            $table->string('phone_number',16)->nullable()->unique();
+            $table->string('id_number')->nullable()->unique();
             $table->integer('mate_id')->nullable()->unique();
             $table->timestamps();
         });

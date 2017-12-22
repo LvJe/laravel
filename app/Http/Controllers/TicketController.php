@@ -2,25 +2,100 @@
 
 namespace App\Http\Controllers;
 
+use App\Ticket;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class TicketController extends Controller
 {
-    //
-    public function showTickets(){
-        $tickets = DB::table('tickets')->get();
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $tickets = Ticket::get();
         return view('ticket/tickets',compact('tickets'));
     }
-    public function mates(){
-        $mates = DB::table('mates as m')
-            ->leftJoin('tickets as t1','m.mate_one_id','=','t1.id')
-            ->leftJoin('tickets as t2','m.mate_other_id','=','t2.id')
-            ->select('m.*','t1.name as mate_one_name','t2.name as mate_other_name'
-                ,'t1.sex as mate_one_sex','t2.sex as mate_other_sex'
-                ,'t1.phone_number as mate_one_phone_number','t2.phone_number as mate_other_phone_number'
-                ,'t1.id_number as mate_one_id_number','t2.id_number as mate_other_id_number')
-            ->get();
-        return view('ticket/mates',compact('mates'));
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $tickets = Ticket::get();
+        return view('ticket/ticket_form',compact('tickets'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $ticket = new Ticket();
+        /*$this->validate($request, [
+            'title' => 'required|unique:posts|max:255',
+            'body' => 'required',
+        ]);*/
+        $this->validate($request, [
+            'name'=>'required',
+            'sex'=>'required',
+            'phone_number'=>'required',
+            'id_number'=>'required',
+        ]);
+        echo '123';
+        $ticket->create($request->all());
+        var_dump($request->all());
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Ticket  $ticket
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Ticket $ticket)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Ticket  $ticket
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Ticket $ticket)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Ticket  $ticket
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Ticket $ticket)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Ticket  $ticket
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Ticket $ticket)
+    {
+        //
     }
 }

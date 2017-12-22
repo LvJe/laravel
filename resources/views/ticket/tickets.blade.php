@@ -37,7 +37,7 @@
                                     @else
                                         未知
                                     @endif
-                                    <td>{{$ticket->id_number}}}</td>
+                                    <td>{{$ticket->id_number}}</td>
                                     <td>
                                         <a>编辑</a>
                                         |

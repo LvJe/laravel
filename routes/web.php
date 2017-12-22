@@ -32,8 +32,9 @@ Route::get('/{default}',function ($default=''){
 Auth::routes();
 
 //ticketRoutes...
-Route::get('/tickets','TicketController@showTickets')->name('ticket');
-Route::get('/tickets/mates','TicketController@mates')->name('ticket');
+Route::resource('/tickets','TicketController');
+
+Route::get('/mates','MateController@mates');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
